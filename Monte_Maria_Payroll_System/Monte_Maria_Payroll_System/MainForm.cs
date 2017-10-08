@@ -30,5 +30,7 @@ namespace Monte_Maria_Payroll_System
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
+		
+		
 	}
 }

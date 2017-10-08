@@ -43,14 +43,6 @@ namespace Monte_Marial_Lib
 	    bggQueryPgSql query = new bggQueryPgSql();
         string myString;
         
-        public bool Log_in(string username, password)
-        {
-        	myString = "Select role from log_in where username = '"+username+"' and password = '"+password+"'";
-        	return query.ViaSingleData(myString);
-        	
+        
         }
-        
-        
-        
-	    }
 }
