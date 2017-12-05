@@ -17,12 +17,15 @@ namespace MMPSv1._1
     {
         Objdtr_payroll_date dates = new Objdtr_payroll_date();
         Objall_queries query = new Objall_queries();
+        Objemployee_profiles profile = new Objemployee_profiles();
         TextInfo txt = CultureInfo.CurrentCulture.TextInfo;
 
         public UC_payroll_compute()
         {
             InitializeComponent();
             cmbox_date = dates.GetDates(cmbox_date);
+
+            txtbox_name = profile.GetProfiles(txtbox_name);
         }
 
         private void cmbox_date_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,5 +60,20 @@ namespace MMPSv1._1
 
             }
         }
+
+        private void txtbox_name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtbox_name.AutoCompleteCustomSource.Contains(txtbox_name.Text))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    profile.Profile_id = int.Parse(profile.GetProfileIDusingname(txtbox_name.Text));
+
+                }
+            }
+        }
+
+
+
     }
 }

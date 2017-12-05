@@ -1,0 +1,10 @@
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\monte_marai_library.dll
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\monte_marai_library.pdb
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\bggPgSql.dll
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\ListViewEx.dll
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\Mono.Security.dll
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\Npgsql.dll
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\ObjectListView.dll
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\bin\Debug\bggPgSql.pdb
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.dll
+C:\Users\jazzybert26\documents\visual studio 2013\Projects\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.pdb

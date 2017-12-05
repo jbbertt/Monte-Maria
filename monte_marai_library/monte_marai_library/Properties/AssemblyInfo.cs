@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Monte_Maria_Lib")]
+[assembly: AssemblyTitle("monte_marai_library")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Monte_Maria_Lib")]
+[assembly: AssemblyProduct("monte_marai_library")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2eb17c28-2d70-4134-95a4-0c5fa7a705d6")]
+[assembly: Guid("54b612f5-a906-44a0-aed1-ce356339254e")]
 
 // Version information for an assembly consists of the following four values:
 //
