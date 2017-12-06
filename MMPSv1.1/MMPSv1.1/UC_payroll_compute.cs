@@ -18,6 +18,7 @@ namespace MMPSv1._1
         Objdtr_payroll_date dates = new Objdtr_payroll_date();
         Objall_queries query = new Objall_queries();
         Objemployee_profiles profile = new Objemployee_profiles();
+        Objdeductions deduc = new Objdeductions();
         TextInfo txt = CultureInfo.CurrentCulture.TextInfo;
 
         public UC_payroll_compute()
@@ -75,33 +76,37 @@ namespace MMPSv1._1
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked && !checkBox2.Checked && !checkBox4.Checked)
+            if (checkBox1.Checked && !checkBox2.Checked  && txtbox_name.Text.Length > 0)
             {
+                deduc.Mode_id = 1;
+                deduc.Profile_id = profile.Profile_id;
+
+                deduc.Deduction_id = deduc.generate_deduction_id();
+                deduc.Profile_id = profile.Profile_id;
+                deduc.Sss_contribution = deduc.getEmp_sss_contribution();
+                deduc.Philhealth_contribution = deduc.getEmp_philhealth_contribution();
+                deduc.Pagibig_contribution = deduc.getEmp_pafibig_contribution();
+
                 MessageBox.Show("deduct the 15th");
             }
 
-            else if (checkBox2.Checked && !checkBox1.Checked && !checkBox4.Checked)
+            else if (checkBox2.Checked && !checkBox1.Checked  && txtbox_name.Text.Length > 0)
             {
+                deduc.Mode_id = 2;
+                deduc.Profile_id = profile.Profile_id;
+
+                deduc.Deduction_id = deduc.generate_deduction_id();
+                deduc.Profile_id = profile.Profile_id;
+                deduc.Sss_contribution = deduc.getEmp_sss_contribution();
+                deduc.Philhealth_contribution = deduc.getEmp_philhealth_contribution();
+                deduc.Pagibig_contribution = deduc.getEmp_pafibig_contribution();
+
                 MessageBox.Show("deduct the 30th");
             }
 
-            else if (checkBox4.Checked && checkBox1.Checked && !checkBox2.Checked)
+            if(!checkBox1.Checked && !checkBox2.Checked)
             {
-                MessageBox.Show("deduct the per payroll and 15th");
-            }
-
-            else if (checkBox4.Checked && !checkBox1.Checked && checkBox2.Checked)
-            {
-                MessageBox.Show("deduct the per payroll and 30th");
-            }
-
-            else if (checkBox4.Checked && checkBox1.Checked && checkBox2.Checked)
-            {
-                MessageBox.Show("You can only check only 2 checkbox!");
-            }
-            else if (!checkBox4.Checked && !checkBox1.Checked && !checkBox2.Checked)
-            {
-                MessageBox.Show("Please check the checkbox for deductions.");
+                MessageBox.Show("Please check the checkbox!");
             }
         }
 

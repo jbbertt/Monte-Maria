@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using bggPgSql;
 
 namespace monte_marai_library
 {
@@ -136,7 +137,40 @@ namespace monte_marai_library
             get { return mode_id; }
             set { mode_id = value; }
         }
-
-
     }
+   public class Objdeductions : deductions
+   {
+       bggQueryPgSql myQuery = new bggQueryPgSql();
+       string myString;
+
+       public bool Insert()
+       {
+           myString = "Insert into deductions(deduction_id,profile_id,sss_contribution,pagibig_contribution,philhealth_contribution,od_ca,od_eggs,od_hcard,od_hmo,od_phic,od_tin,od_uniform,od_vehicle,loan_sss,loan_pagibig) values(" + Deduction_id + ", " + Profile_id + ", " + Sss_contribution + ", " + Pagibig_contribution + ", " + Philhealth_contribution + ", " + Od_ca + ", " + Od_eggs + "," + Od_hcard + ", " + Od_hmo + ", " + Od_phic + ", " + Od_tin + ", " + Od_uniform + ", " + Od_vehicle + ", " + Loan_sss + ", " + Loan_pagibig + ")";
+           return myQuery.InsertUpdateDelete(myString);
+       }
+
+       public int generate_deduction_id()
+       {
+           myString = "Select coalesce(max(deduction_id), 0) + 1 from deductions;";
+           return int.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_sss_contribution()
+       {
+           myString = "select COALESCE(sum(a.sss_contribution),0) from emp_mandatory_sss_deduction a, emp_madatory_deduction b, master_employee c, employee_profiles d where  d.profile_id = '" + Profile_id + "' and a.paymode_id = '" + Mode_id + "' and d.profile_id = c.emp_profile_id and c.emp_mandatory_deduction_id = b.emp_mandatory_deduction_id and b.sss_madatory_deduction_id = a.sss_mandatory_deduction_id;";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_philhealth_contribution()
+       {
+           myString = "select  COALESCE(sum(a.sss_contribution),0) from emp_mandatory_sss_deduction a, emp_madatory_deduction b, master_employee c, employee_profiles d where  d.profile_id = '"+Profile_id+"' and a.paymode_id = '"+Mode_id+"' and d.profile_id = c.emp_profile_id and c.emp_mandatory_deduction_id = b.emp_mandatory_deduction_id and b.sss_madatory_deduction_id = a.sss_mandatory_deduction_id;";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_pafibig_contribution()
+       {
+           myString = "select  COALESCE(sum(a.pag_ibig_contribution),0) from emp_mandatory_pag_ibig_deduction a, emp_madatory_deduction b, master_employee c, employee_profiles d where  d.profile_id = '"+Profile_id+"' and a.paymode_id = '"+Mode_id+"' and d.profile_id = c.emp_profile_id and c.emp_mandatory_deduction_id = b.emp_mandatory_deduction_id and b.philhealth_deduction_id = a.pag_ibig_mandatory_deduction_id;";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+   }
 }
