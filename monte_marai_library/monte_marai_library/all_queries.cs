@@ -97,5 +97,7 @@ namespace monte_marai_library
             return myQuery.ViaDataGridView(myString, mtDgv);
         }
 
+        //deductions
+
     }
 }

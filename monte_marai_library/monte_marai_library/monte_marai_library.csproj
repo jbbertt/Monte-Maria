@@ -58,6 +58,7 @@
     <Compile Include="all_queries.cs" />
     <Compile Include="citezenship.cs" />
     <Compile Include="civil_status.cs" />
+    <Compile Include="deductions.cs" />
     <Compile Include="department.cs" />
     <Compile Include="dependent.cs" />
     <Compile Include="dtr_attendance.cs" />
