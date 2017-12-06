@@ -9,3 +9,9 @@ C:\Users\jazzybert26\Documents\Visual Studio 2013\Projects\monte_marai_library\m
 C:\Users\jazzybert26\Documents\Visual Studio 2013\Projects\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.dll
 C:\Users\jazzybert26\Documents\Visual Studio 2013\Projects\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.pdb
 C:\Users\jazzybert26\Documents\Visual Studio 2013\Projects\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.csprojResolveAssemblyReference.cache
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\bin\Debug\monte_marai_library.dll
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\bin\Debug\monte_marai_library.pdb
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\bin\Debug\bggPgSql.pdb
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.csprojResolveAssemblyReference.cache
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.dll
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.pdb

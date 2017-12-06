@@ -91,5 +91,11 @@ namespace monte_marai_library
             return myQuery.ViaDataGridView(myString, mtDgv);
         }
 
+        public DataGridView GetEmployee_Salary_Detailed(DataGridView mtDgv)
+        {
+            myString = "select initcap(a.last_name)||', '||initcap(a.first_name)||' '||' ' as employee_name, b.payroll_date , c.regular_pay, c.special_pay , c.legal_pay , c.salary as total from employee_profiles a, dtr_payroll_date b, salaries c, dtr_attendance d where  d.payroll_date_id = '" + Payroll_date_id + "' and c.profile_id = '"+Profile_id+"' and d.attendance_id = c.attendance_id and d.payroll_date_id = b.payroll_date_id and c.profile_id = a.profile_id;";
+            return myQuery.ViaDataGridView(myString, mtDgv);
+        }
+
     }
 }

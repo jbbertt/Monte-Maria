@@ -101,14 +101,20 @@ namespace MMPSv1._1
 
                             //compute the regular employee salary 
                             double dl_rate_fee = dl_rate * attendance.Days_present;
+                            sal.Regular_pay = dl_rate_fee;
 
                             // legal holiday 
-                            double legal_fee = legalhol * attendance.Days_legal_holiday;
+                            double legal = dl_rate * legalhol;
+                            double legal_pay = legal * attendance.Days_legal_holiday;
+                            sal.Legal_pay = legal_pay;
 
                             //special holiday
-                            double special_fee = special * attendance.Special_non_workingday;
+                            double sp = dl_rate * special;
+                            double special_pay = sp * attendance.Special_non_workingday;
+                            sal.Special_pay = special_pay;
 
-                            sal.Salary = dl_rate_fee + legal_fee + special_fee;
+                            //save the total salary
+                            sal.Salary = dl_rate_fee + legal_pay + special_pay;
 
                             sal.Salary_id = sal.generate_salary_id();
                             sal.Attendance_id = attendance.Attendance_id;

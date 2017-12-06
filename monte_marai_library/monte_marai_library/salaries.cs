@@ -41,6 +41,28 @@ namespace monte_marai_library
             get { return attendance_id; }
             set { attendance_id = value; }
         }
+
+        double special_pay;
+
+        public double Special_pay
+        {
+            get { return special_pay; }
+            set { special_pay = value; }
+        }
+        double legal_pay;
+
+        public double Legal_pay
+        {
+            get { return legal_pay; }
+            set { legal_pay = value; }
+        }
+        double regular_pay;
+
+        public double Regular_pay
+        {
+            get { return regular_pay; }
+            set { regular_pay = value; }
+        }
     }
 
     public class Objsalaries : salaries
@@ -50,7 +72,7 @@ namespace monte_marai_library
 
         public bool Insert()
         {
-            myString = "Insert into salaries(salary_id,salary,profile_id,attendance_id) values(" + Salary_id + ", " + Salary + ", " + Profile_id + ", " + Attendance_id + ")";
+            myString = "Insert into salaries(salary_id,salary,profile_id,attendance_id,special_pay,legal_pay,regular_pay) values(" + Salary_id + ", " + Salary + ", " + Profile_id + ", " + Attendance_id + ", " + Special_pay + ", " + Legal_pay + ", " + Regular_pay + ")";
             return myQuery.InsertUpdateDelete(myString);
         }
 
