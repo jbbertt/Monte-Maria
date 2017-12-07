@@ -98,12 +98,17 @@ namespace MMPSv1._1
                 deduc.Loan_sss = deduc.getEmp_loan_sss();
                 deduc.Loan_pagibig = deduc.getEmp_loan_pagibig();
 
+                deduc.Attendance_id = dates.Payroll_date_id;
 
                 deduc.Deduction_total = deduc.getEmp_sss_contribution() + deduc.getEmp_philhealth_contribution() + deduc.getEmp_pafibig_contribution()
                                        + deduc.getEmp_od_ca() + deduc.getEmp_od_eggs() + deduc.getEmp_od_health_card() + deduc.getEmp_od_hmo() + deduc.getEmp_od_phic()
                                        + deduc.getEmp_od_tin() + deduc.getEmp_od_uniform() + deduc.getEmp_od_vehicle_plan() + deduc.getEmp_loan_sss() + deduc.getEmp_loan_pagibig();
 
-                MessageBox.Show("deduct the 15th");
+                if (deduc.Insert())
+                {
+                    MessageBox.Show("Employee Salary and Deduction has Computed");
+                    txtbox_name.Clear();
+                }
             }
 
             else if (checkBox2.Checked && !checkBox1.Checked  && txtbox_name.Text.Length > 0)
@@ -127,11 +132,16 @@ namespace MMPSv1._1
                 deduc.Loan_sss = deduc.getEmp_loan_sss();
                 deduc.Loan_pagibig = deduc.getEmp_loan_pagibig();
 
+                deduc.Attendance_id = dates.Payroll_date_id;
+
                 deduc.Deduction_total = deduc.getEmp_sss_contribution() + deduc.getEmp_philhealth_contribution() + deduc.getEmp_pafibig_contribution()
                                       + deduc.getEmp_od_ca() + deduc.getEmp_od_eggs() + deduc.getEmp_od_health_card() + deduc.getEmp_od_hmo() + deduc.getEmp_od_phic()
                                       + deduc.getEmp_od_tin() + deduc.getEmp_od_uniform() + deduc.getEmp_od_vehicle_plan() + deduc.getEmp_loan_sss() + deduc.getEmp_loan_pagibig();
 
-                MessageBox.Show("deduct the 30th");
+                if(deduc.Insert()){
+                     MessageBox.Show("Employee Salary and Deduction has Computed");
+                }
+               
             }
 
             if(!checkBox1.Checked && !checkBox2.Checked)

@@ -144,6 +144,14 @@ namespace monte_marai_library
             get { return deduction_total; }
             set { deduction_total = value; }
         }
+
+        int attendance_id;
+
+        public int Attendance_id
+        {
+            get { return attendance_id; }
+            set { attendance_id = value; }
+        }
     }
    public class Objdeductions : deductions
    {
@@ -152,7 +160,7 @@ namespace monte_marai_library
 
        public bool Insert()
        {
-           myString = "Insert into deductions(deduction_id,profile_id,sss_contribution,pagibig_contribution,philhealth_contribution,od_ca,od_eggs,od_hcard,od_hmo,od_phic,od_tin,od_uniform,od_vehicle,loan_sss,loan_pagibig,deduction_total) values(" + Deduction_id + ", " + Profile_id + ", " + Sss_contribution + ", " + Pagibig_contribution + ", " + Philhealth_contribution + ", " + Od_ca + ", " + Od_eggs + "," + Od_hcard + ", " + Od_hmo + ", " + Od_phic + ", " + Od_tin + ", " + Od_uniform + ", " + Od_vehicle + ", " + Loan_sss + ", " + Loan_pagibig + ",, " + Deduction_total + ")";
+           myString = "Insert into deductions(deduction_id,profile_id,sss_contribution,pagibig_contribution,philhealth_contribution,od_ca,od_eggs,od_hcard,od_hmo,od_phic,od_tin,od_uniform,od_vehicle,loan_sss,loan_pagibig,deduction_total,attendance_id) values(" + Deduction_id + ", " + Profile_id + ", " + Sss_contribution + ", " + Pagibig_contribution + ", " + Philhealth_contribution + ", " + Od_ca + ", " + Od_eggs + "," + Od_hcard + ", " + Od_hmo + ", " + Od_phic + ", " + Od_tin + ", " + Od_uniform + ", " + Od_vehicle + ", " + Loan_sss + ", " + Loan_pagibig + ", " + Deduction_total + ", " + Attendance_id + ")";
            return myQuery.InsertUpdateDelete(myString);
        }
 

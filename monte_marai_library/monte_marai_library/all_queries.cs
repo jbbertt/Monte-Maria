@@ -97,7 +97,12 @@ namespace monte_marai_library
             return myQuery.ViaDataGridView(myString, mtDgv);
         }
 
-        //deductions
+        //view payroll details
 
+        public DataGridView GetPayroll_Details(DataGridView mtDgv)
+        {
+            myString = "select initcap(a.last_name)||', '||initcap(a.first_name)||' '||' ' as employee_name, b.payroll_date , c.days_present , c.days_legal_holiday , c.special_non_workingday from employee_profiles a, dtr_payroll_date b, dtr_attendance c where c. payroll_date_id = '"+Payroll_date_id+"' and c.payroll_date_id = b.payroll_date_id and c.profilie_id = a.profile_id";
+            return myQuery.ViaDataGridView(myString, mtDgv);
+        }
     }
 }
