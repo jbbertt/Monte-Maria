@@ -107,7 +107,7 @@
             this.tb_password.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_password.Location = new System.Drawing.Point(237, 135);
             this.tb_password.Name = "tb_password";
-            this.tb_password.PasswordChar = '*';
+            this.tb_password.PasswordChar = '•';
             this.tb_password.Size = new System.Drawing.Size(235, 26);
             this.tb_password.TabIndex = 11;
             // 
