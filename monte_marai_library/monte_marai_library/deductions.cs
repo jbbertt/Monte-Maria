@@ -137,6 +137,13 @@ namespace monte_marai_library
             get { return mode_id; }
             set { mode_id = value; }
         }
+        double deduction_total;
+
+        public double Deduction_total
+        {
+            get { return deduction_total; }
+            set { deduction_total = value; }
+        }
     }
    public class Objdeductions : deductions
    {
@@ -145,7 +152,7 @@ namespace monte_marai_library
 
        public bool Insert()
        {
-           myString = "Insert into deductions(deduction_id,profile_id,sss_contribution,pagibig_contribution,philhealth_contribution,od_ca,od_eggs,od_hcard,od_hmo,od_phic,od_tin,od_uniform,od_vehicle,loan_sss,loan_pagibig) values(" + Deduction_id + ", " + Profile_id + ", " + Sss_contribution + ", " + Pagibig_contribution + ", " + Philhealth_contribution + ", " + Od_ca + ", " + Od_eggs + "," + Od_hcard + ", " + Od_hmo + ", " + Od_phic + ", " + Od_tin + ", " + Od_uniform + ", " + Od_vehicle + ", " + Loan_sss + ", " + Loan_pagibig + ")";
+           myString = "Insert into deductions(deduction_id,profile_id,sss_contribution,pagibig_contribution,philhealth_contribution,od_ca,od_eggs,od_hcard,od_hmo,od_phic,od_tin,od_uniform,od_vehicle,loan_sss,loan_pagibig,deduction_total) values(" + Deduction_id + ", " + Profile_id + ", " + Sss_contribution + ", " + Pagibig_contribution + ", " + Philhealth_contribution + ", " + Od_ca + ", " + Od_eggs + "," + Od_hcard + ", " + Od_hmo + ", " + Od_phic + ", " + Od_tin + ", " + Od_uniform + ", " + Od_vehicle + ", " + Loan_sss + ", " + Loan_pagibig + ",, " + Deduction_total + ")";
            return myQuery.InsertUpdateDelete(myString);
        }
 
@@ -170,6 +177,67 @@ namespace monte_marai_library
        public double getEmp_pafibig_contribution()
        {
            myString = "select  COALESCE(sum(a.pag_ibig_contribution),0) from emp_mandatory_pag_ibig_deduction a, emp_madatory_deduction b, master_employee c, employee_profiles d where  d.profile_id = '"+Profile_id+"' and a.paymode_id = '"+Mode_id+"' and d.profile_id = c.emp_profile_id and c.emp_mandatory_deduction_id = b.emp_mandatory_deduction_id and b.philhealth_deduction_id = a.pag_ibig_mandatory_deduction_id;";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_od_ca()
+       {
+           myString = "select  COALESCE(sum(a.ca_deduction_per_payroll),0) from od_cash_advances a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and b.profile_id =  a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_od_eggs()
+       {
+           myString = "select  COALESCE(sum(a.amount),0) from od_employee_eggs a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and b.profile_id =  a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_od_health_card()
+       {
+           myString = "select  COALESCE(sum(a.amount_deducted),0) from od_health_card a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and a.mode_id = '"+Mode_id+"' and b.profile_id = a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_od_hmo()
+       {
+           myString = "select  COALESCE(sum(a.amount_deducted),0) from od_hmo a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and b.profile_id = a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_od_phic()
+       {
+           myString = "select  COALESCE(sum(a.phic_employee_contribution),0) from od_phic a, employee_profiles b where b.profile_id = '"+Profile_id+"' and a.phic_mode = '"+Mode_id+"' and b.profile_id = a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+
+       public double getEmp_od_tin()
+       {
+           myString = "select  COALESCE(sum(a.withholding_taax_rate),0) from od_tin a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and b.profile_id = a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_od_uniform()
+       {
+           myString = "select  COALESCE(sum(a.amount_deducted),0) from od_uniform a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and b.profile_id = a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_od_vehicle_plan()
+       {
+           myString = "select  COALESCE(sum(a.amount_deducted),0) from od_vehicle_plan a, employee_profiles b where b.profile_id = '"+Profile_id+"' and b.profile_id = a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_loan_sss()
+       {
+           myString = "select  COALESCE(sum(a.loan_amount_deducted),0) from loan_sss a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and a.loan_deduction_mode = '"+Mode_id+"' and b.profile_id = a.profile_id";
+           return double.Parse(myQuery.ViaSingleData(myString));
+       }
+
+       public double getEmp_loan_pagibig()
+       {
+           myString = "select  COALESCE(sum(a.loan_deduction_amount),0) from loan_pagibig a, employee_profiles b where  b.profile_id = '"+Profile_id+"' and a.loan_deduc_mode = '"+Mode_id+"' and b.profile_id = a.profile_id";
            return double.Parse(myQuery.ViaSingleData(myString));
        }
    }

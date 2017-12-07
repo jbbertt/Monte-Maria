@@ -83,16 +83,32 @@ namespace MMPSv1._1
 
                 deduc.Deduction_id = deduc.generate_deduction_id();
                 deduc.Profile_id = profile.Profile_id;
+
                 deduc.Sss_contribution = deduc.getEmp_sss_contribution();
                 deduc.Philhealth_contribution = deduc.getEmp_philhealth_contribution();
                 deduc.Pagibig_contribution = deduc.getEmp_pafibig_contribution();
+                deduc.Od_ca = deduc.getEmp_od_ca();
+                deduc.Od_eggs = deduc.getEmp_od_eggs();
+                deduc.Od_hcard = deduc.getEmp_od_health_card();
+                deduc.Od_hmo = deduc.getEmp_od_hmo();
+                deduc.Od_phic = deduc.getEmp_od_phic();
+                deduc.Od_tin = deduc.getEmp_od_tin();
+                deduc.Od_uniform = deduc.getEmp_od_uniform();
+                deduc.Od_vehicle = deduc.getEmp_od_vehicle_plan();
+                deduc.Loan_sss = deduc.getEmp_loan_sss();
+                deduc.Loan_pagibig = deduc.getEmp_loan_pagibig();
+
+
+                deduc.Deduction_total = deduc.getEmp_sss_contribution() + deduc.getEmp_philhealth_contribution() + deduc.getEmp_pafibig_contribution()
+                                       + deduc.getEmp_od_ca() + deduc.getEmp_od_eggs() + deduc.getEmp_od_health_card() + deduc.getEmp_od_hmo() + deduc.getEmp_od_phic()
+                                       + deduc.getEmp_od_tin() + deduc.getEmp_od_uniform() + deduc.getEmp_od_vehicle_plan() + deduc.getEmp_loan_sss() + deduc.getEmp_loan_pagibig();
 
                 MessageBox.Show("deduct the 15th");
             }
 
             else if (checkBox2.Checked && !checkBox1.Checked  && txtbox_name.Text.Length > 0)
             {
-                deduc.Mode_id = 2;
+                deduc.Mode_id = 1;
                 deduc.Profile_id = profile.Profile_id;
 
                 deduc.Deduction_id = deduc.generate_deduction_id();
@@ -100,6 +116,20 @@ namespace MMPSv1._1
                 deduc.Sss_contribution = deduc.getEmp_sss_contribution();
                 deduc.Philhealth_contribution = deduc.getEmp_philhealth_contribution();
                 deduc.Pagibig_contribution = deduc.getEmp_pafibig_contribution();
+                deduc.Od_ca = deduc.getEmp_od_ca();
+                deduc.Od_eggs = deduc.getEmp_od_eggs();
+                deduc.Od_hcard = deduc.getEmp_od_health_card();
+                deduc.Od_hmo = deduc.getEmp_od_hmo();
+                deduc.Od_phic = deduc.getEmp_od_phic();
+                deduc.Od_tin = deduc.getEmp_od_tin();
+                deduc.Od_uniform = deduc.getEmp_od_uniform();
+                deduc.Od_vehicle = deduc.getEmp_od_vehicle_plan();
+                deduc.Loan_sss = deduc.getEmp_loan_sss();
+                deduc.Loan_pagibig = deduc.getEmp_loan_pagibig();
+
+                deduc.Deduction_total = deduc.getEmp_sss_contribution() + deduc.getEmp_philhealth_contribution() + deduc.getEmp_pafibig_contribution()
+                                      + deduc.getEmp_od_ca() + deduc.getEmp_od_eggs() + deduc.getEmp_od_health_card() + deduc.getEmp_od_hmo() + deduc.getEmp_od_phic()
+                                      + deduc.getEmp_od_tin() + deduc.getEmp_od_uniform() + deduc.getEmp_od_vehicle_plan() + deduc.getEmp_loan_sss() + deduc.getEmp_loan_pagibig();
 
                 MessageBox.Show("deduct the 30th");
             }
