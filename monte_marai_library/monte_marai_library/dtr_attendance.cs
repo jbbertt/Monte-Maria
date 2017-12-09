@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using bggPgSql;
+using System.Windows.Forms;
 
 namespace monte_marai_library
 {
@@ -84,5 +85,10 @@ namespace monte_marai_library
             return int.Parse(myQuery.ViaSingleData(myString));
         }
 
+        public DataGridView getAttendance(DataGridView mtDgv)
+        {
+            myString = "select initcap(a.last_name)||', '||initcap(a.first_name)||' '||' ' as employee_name , b.days_present , b.days_legal_holiday , b.special_non_workingday from employee_profiles a, dtr_attendance b where b.payroll_date_id = '"+Payroll_date_id+"' and b.profilie_id = a.profile_id";
+            return myQuery.ViaDataGridView(myString, mtDgv);
+        }
     }
 }

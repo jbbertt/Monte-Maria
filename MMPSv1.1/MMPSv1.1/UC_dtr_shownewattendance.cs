@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using monte_marai_library;
-
+using System.Globalization;
 
 namespace MMPSv1._1
 {
@@ -18,6 +18,7 @@ namespace MMPSv1._1
         Objdtr_payroll_date dates = new Objdtr_payroll_date();
         Objdtr_attendance attendance = new Objdtr_attendance();
         Objsalaries sal = new Objsalaries();
+        TextInfo txt = CultureInfo.CurrentCulture.TextInfo;
 
         public UC_dtr_shownewattendance()
         {
@@ -32,7 +33,7 @@ namespace MMPSv1._1
         {
 
         }
-
+/*
         private void btn_add_Click(object sender, EventArgs e)
         {
             if(txtbox_legal_hol.Text.Length > 0 & txtbox_name.Text.Length > 0 & txtbox_present.Text.Length > 0 & txtbox_special_hol.Text.Length > 0){
@@ -46,7 +47,7 @@ namespace MMPSv1._1
                 item.SubItems.Add(txtbox_special_hol.Text);
                
 
-                listview_attendance.Items.Add(item);
+                
                
                 
                 txtbox_legal_hol.Clear();
@@ -59,7 +60,7 @@ namespace MMPSv1._1
                 MessageBox.Show("Please Fill The Fields", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
+*/
         private void txtbox_name_KeyDown(object sender, KeyEventArgs e)
         {
             if (txtbox_name.AutoCompleteCustomSource.Contains(txtbox_name.Text))
@@ -74,66 +75,67 @@ namespace MMPSv1._1
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (listview_attendance.Items.Count > 0 & payroll_date_id.SelectedIndex != -1)
+            if (payroll_date_id.SelectedIndex != -1 & txtbox_name.Text.Length > 0 & txtbox_legal_hol.Text.Length > 0 & txtbox_special_hol.Text.Length > 0 & txtbox_present.Text.Length > 0)
             {
                 DialogResult answer = MessageBox.Show("Are your sure you want to save this?", "Confirm Save", MessageBoxButtons.YesNoCancel);
                 if (answer == DialogResult.Yes)
                 {
 
-                    foreach (ListViewItem item in listview_attendance.Items)
+                    attendance.Attendance_id = attendance.generate_attendance_id();
+                    attendance.Payroll_date_id = dates.Payroll_date_id;
+
+                    attendance.Profilie_id = profile.Profile_id;
+                    attendance.Days_present = double.Parse(txtbox_present.Text);
+                    attendance.Days_legal_holiday = double.Parse(txtbox_legal_hol.Text);
+                    attendance.Special_non_workingday = double.Parse(txtbox_special_hol.Text);
+
+                    if (attendance.Insert())
                     {
 
-                        attendance.Attendance_id = attendance.generate_attendance_id();
-                        attendance.Payroll_date_id = dates.Payroll_date_id;
+                        sal.Profile_id = profile.Profile_id;
 
-                        attendance.Profilie_id = int.Parse(item.SubItems[1].Text);
-                        attendance.Days_present = double.Parse(item.SubItems[3].Text);
-                        attendance.Days_legal_holiday = double.Parse(item.SubItems[4].Text);
-                        attendance.Special_non_workingday = double.Parse(item.SubItems[5].Text);
-                     
+                        double dl_rate = sal.getdaily_rate();
+                        double legalhol = sal.getleagal_rate();
+                        double special = sal.getspecial_rate();
 
-                        if (attendance.Insert())
+                        //compute the regular employee salary 
+                        double dl_rate_fee = dl_rate * attendance.Days_present;
+                        sal.Regular_pay = dl_rate_fee;
+
+                        // legal holiday 
+                        double legal = dl_rate * legalhol;
+                        double legal_pay = legal * attendance.Days_legal_holiday;
+                        sal.Legal_pay = legal_pay;
+
+                        //special holiday
+                        double sp = dl_rate * special;
+                        double special_pay = sp * attendance.Special_non_workingday;
+                        sal.Special_pay = special_pay;
+
+                        //save the total salary
+                        sal.Salary = dl_rate_fee + legal_pay + special_pay;
+
+                        sal.Salary_id = sal.generate_salary_id();
+                        sal.Attendance_id = attendance.Attendance_id;
+
+                        if (sal.Insert())
                         {
-                            sal.Profile_id = profile.Profile_id;
-
-                            double dl_rate = sal.getdaily_rate();
-                            double legalhol = sal.getleagal_rate();
-                            double special = sal.getspecial_rate();
-
-                            //compute the regular employee salary 
-                            double dl_rate_fee = dl_rate * attendance.Days_present;
-                            sal.Regular_pay = dl_rate_fee;
-
-                            // legal holiday 
-                            double legal = dl_rate * legalhol;
-                            double legal_pay = legal * attendance.Days_legal_holiday;
-                            sal.Legal_pay = legal_pay;
-
-                            //special holiday
-                            double sp = dl_rate * special;
-                            double special_pay = sp * attendance.Special_non_workingday;
-                            sal.Special_pay = special_pay;
-
-                            //save the total salary
-                            sal.Salary = dl_rate_fee + legal_pay + special_pay;
-
-                            sal.Salary_id = sal.generate_salary_id();
-                            sal.Attendance_id = attendance.Attendance_id;
-                            
-
-                            if (sal.Insert())
-                            {
-                                MessageBox.Show("Attendance has save!");
-                            }
-                            
-                        }
-
+                            MessageBox.Show("Attendance has save!");
+                            txtbox_present.Clear();
+                            txtbox_legal_hol.Clear();
+                            txtbox_name.Clear();
+                            txtbox_special_hol.Clear();
+                        }                      
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Saving Fail. Please input a valid data.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Saving Fail. Please input a valid data.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please Choose Date", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -144,6 +146,29 @@ namespace MMPSv1._1
 
                 dates.Payroll_date = DateTime.Parse(payroll_date_id.Text);
                 dates.Payroll_date_id = dates.GetDateId();
+            }
+        }
+
+        //view button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            attendance.Payroll_date_id = dates.Payroll_date_id;
+            dgv_attendance = attendance.getAttendance(dgv_attendance);
+            SetGrid2();
+        }
+        void SetGrid2()
+        {
+
+            dgv_attendance.Columns["employee_name"].Width = 150;
+            dgv_attendance.Columns["days_present"].Width = 120;
+            dgv_attendance.Columns["days_legal_holiday"].Width = 170;
+            dgv_attendance.Columns["special_non_workingday"].Width = 170;
+           
+
+            foreach (DataGridViewColumn col in dgv_attendance.Columns)
+            {
+                col.HeaderText = txt.ToTitleCase(col.HeaderText).Replace("_", " ");
+
             }
         }
     }

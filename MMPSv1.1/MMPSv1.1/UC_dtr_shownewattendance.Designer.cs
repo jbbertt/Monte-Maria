@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.payroll_date_id = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
             this.txtbox_special_hol = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtbox_legal_hol = new System.Windows.Forms.TextBox();
@@ -41,15 +43,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtbox_name = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.profile_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.profile_ids = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.employee_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.days_present = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.days_legal_holiday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.special_non_workingday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listview_attendance = new System.Windows.Forms.ListView();
+            this.dgv_attendance = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_attendance)).BeginInit();
             this.SuspendLayout();
             // 
             // payroll_date_id
@@ -84,7 +81,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btn_add);
+            this.panel1.Controls.Add(this.btn_save);
             this.panel1.Controls.Add(this.txtbox_special_hol);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtbox_legal_hol);
@@ -98,16 +95,16 @@
             this.panel1.Size = new System.Drawing.Size(312, 378);
             this.panel1.TabIndex = 52;
             // 
-            // btn_add
+            // btn_save
             // 
-            this.btn_add.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.Location = new System.Drawing.Point(111, 306);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(80, 30);
-            this.btn_add.TabIndex = 57;
-            this.btn_add.Text = "Add";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            this.btn_save.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_save.Location = new System.Drawing.Point(111, 313);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(80, 30);
+            this.btn_save.TabIndex = 53;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // txtbox_special_hol
             // 
@@ -178,76 +175,42 @@
             this.label3.TabIndex = 49;
             this.label3.Text = "Name :";
             // 
-            // btn_save
+            // dgv_attendance
             // 
-            this.btn_save.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Location = new System.Drawing.Point(745, 10);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(80, 30);
-            this.btn_save.TabIndex = 53;
-            this.btn_save.Text = "Save";
-            this.btn_save.UseVisualStyleBackColor = true;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_attendance.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_attendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_attendance.Location = new System.Drawing.Point(344, 50);
+            this.dgv_attendance.Name = "dgv_attendance";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_attendance.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_attendance.Size = new System.Drawing.Size(761, 344);
+            this.dgv_attendance.TabIndex = 53;
             // 
-            // profile_id
+            // button1
             // 
-            this.profile_id.Text = "Profile Id";
-            this.profile_id.Width = 0;
-            // 
-            // profile_ids
-            // 
-            this.profile_ids.DisplayIndex = 5;
-            this.profile_ids.Text = "Profile Ids";
-            // 
-            // employee_name
-            // 
-            this.employee_name.DisplayIndex = 1;
-            this.employee_name.Text = "Employee Name";
-            this.employee_name.Width = 170;
-            // 
-            // days_present
-            // 
-            this.days_present.DisplayIndex = 2;
-            this.days_present.Text = "Number of days Present";
-            this.days_present.Width = 181;
-            // 
-            // days_legal_holiday
-            // 
-            this.days_legal_holiday.DisplayIndex = 3;
-            this.days_legal_holiday.Tag = "";
-            this.days_legal_holiday.Text = "Legal Holidays Present";
-            this.days_legal_holiday.Width = 142;
-            // 
-            // special_non_workingday
-            // 
-            this.special_non_workingday.DisplayIndex = 4;
-            this.special_non_workingday.Text = "Special Non working Holiday";
-            this.special_non_workingday.Width = 188;
-            // 
-            // listview_attendance
-            // 
-            this.listview_attendance.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.profile_id,
-            this.profile_ids,
-            this.employee_name,
-            this.days_present,
-            this.days_legal_holiday,
-            this.special_non_workingday});
-            this.listview_attendance.GridLines = true;
-            this.listview_attendance.Location = new System.Drawing.Point(345, 50);
-            this.listview_attendance.Name = "listview_attendance";
-            this.listview_attendance.Size = new System.Drawing.Size(748, 378);
-            this.listview_attendance.TabIndex = 51;
-            this.listview_attendance.UseCompatibleStateImageBehavior = false;
-            this.listview_attendance.View = System.Windows.Forms.View.Details;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(681, 400);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 30);
+            this.button1.TabIndex = 54;
+            this.button1.Text = "View";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // UC_dtr_shownewattendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btn_save);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dgv_attendance);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.listview_attendance);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.payroll_date_id);
             this.Controls.Add(this.label1);
@@ -256,6 +219,7 @@
             this.Load += new System.EventHandler(this.UC_dtr_shownewattendance_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_attendance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,7 +231,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.TextBox txtbox_special_hol;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtbox_legal_hol;
@@ -277,12 +240,7 @@
         private System.Windows.Forms.TextBox txtbox_name;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.ColumnHeader profile_id;
-        private System.Windows.Forms.ColumnHeader profile_ids;
-        private System.Windows.Forms.ColumnHeader employee_name;
-        private System.Windows.Forms.ColumnHeader days_present;
-        private System.Windows.Forms.ColumnHeader days_legal_holiday;
-        private System.Windows.Forms.ColumnHeader special_non_workingday;
-        private System.Windows.Forms.ListView listview_attendance;
+        private System.Windows.Forms.DataGridView dgv_attendance;
+        private System.Windows.Forms.Button button1;
     }
 }

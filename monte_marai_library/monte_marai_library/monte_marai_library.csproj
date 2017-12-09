@@ -76,6 +76,7 @@
     <Compile Include="Login_lib.cs" />
     <Compile Include="master_employee.cs" />
     <Compile Include="mode.cs" />
+    <Compile Include="net_salary.cs" />
     <Compile Include="od_cash_advances.cs" />
     <Compile Include="od_employee_eggs.cs" />
     <Compile Include="od_health_card.cs" />

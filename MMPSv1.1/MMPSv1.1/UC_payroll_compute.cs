@@ -19,6 +19,7 @@ namespace MMPSv1._1
         Objall_queries query = new Objall_queries();
         Objemployee_profiles profile = new Objemployee_profiles();
         Objdeductions deduc = new Objdeductions();
+        Objnet_salary net = new Objnet_salary();
         TextInfo txt = CultureInfo.CurrentCulture.TextInfo;
 
         public UC_payroll_compute()
@@ -106,8 +107,18 @@ namespace MMPSv1._1
 
                 if (deduc.Insert())
                 {
-                    MessageBox.Show("Employee Salary and Deduction has Computed");
-                    txtbox_name.Clear();
+                    net.Profile_id = profile.Profile_id;
+
+                    net.Net_salary_id = net.generate_net_salary_id();
+                    net.Employee_net_salary = net.getsalary() - deduc.Deduction_total;
+                    net.Profile_id = profile.Profile_id;
+                    net.Attendance_id = dates.Payroll_date_id;
+                    if (net.Insert())
+                    {
+                        MessageBox.Show("Employee Salary and Deduction has Computed");
+                        txtbox_name.Clear();
+                    }
+                    
                 }
             }
 
@@ -139,7 +150,18 @@ namespace MMPSv1._1
                                       + deduc.getEmp_od_tin() + deduc.getEmp_od_uniform() + deduc.getEmp_od_vehicle_plan() + deduc.getEmp_loan_sss() + deduc.getEmp_loan_pagibig();
 
                 if(deduc.Insert()){
-                     MessageBox.Show("Employee Salary and Deduction has Computed");
+
+                    net.Profile_id = profile.Profile_id;
+
+                    net.Net_salary_id = net.generate_net_salary_id();
+                    net.Employee_net_salary = net.getsalary() - deduc.Deduction_total;
+                    net.Profile_id = profile.Profile_id;
+                    net.Attendance_id = dates.Payroll_date_id;
+                    if (net.Insert())
+                    {
+                        MessageBox.Show("Employee Salary and Deduction has Computed");
+                        txtbox_name.Clear();
+                    }
                 }
                
             }

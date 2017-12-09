@@ -15,3 +15,9 @@ D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-
 D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.csprojResolveAssemblyReference.cache
 D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.dll
 D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\Github Repository\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.pdb
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\OLD VERSION OF SE\Monte-Maria\monte_marai_library\monte_marai_library\bin\Debug\monte_marai_library.dll
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\OLD VERSION OF SE\Monte-Maria\monte_marai_library\monte_marai_library\bin\Debug\monte_marai_library.pdb
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\OLD VERSION OF SE\Monte-Maria\monte_marai_library\monte_marai_library\bin\Debug\bggPgSql.pdb
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\OLD VERSION OF SE\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.csprojResolveAssemblyReference.cache
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\OLD VERSION OF SE\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.dll
+D:\Student's file\3rd year 1st sem\SOFTWARE ENGINEERING\OLD VERSION OF SE\Monte-Maria\monte_marai_library\monte_marai_library\obj\Debug\monte_marai_library.pdb
