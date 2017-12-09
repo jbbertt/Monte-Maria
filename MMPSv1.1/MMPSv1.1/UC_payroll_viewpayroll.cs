@@ -55,13 +55,14 @@ namespace MMPSv1._1
         void SetGrid()
         {
 
-            dgv_details.Columns["employee_name"].Width = 180;
-            dgv_details.Columns["payroll_date"].Width = 140;
-            dgv_details.Columns["days_present"].Width = 150;
-            dgv_details.Columns["days_legal_holiday"].Width = 150;
-            dgv_details.Columns["special_non_workingday"].Width = 150;
+            dgv_details.Columns["employee_name"].Width = 150;
+            dgv_details.Columns["payroll_date"].Width = 130;
+            dgv_details.Columns["days_present"].Width = 120;
+            dgv_details.Columns["days_legal_holiday"].Width = 130;
+            dgv_details.Columns["special_non_workingday"].Width = 130;
             dgv_details.Columns["salary"].Width = 100;
             dgv_details.Columns["deduction_total"].Width = 100;
+            dgv_details.Columns["employee_net_salary"].Width = 100;
 
             foreach (DataGridViewColumn col in dgv_details.Columns)
             {

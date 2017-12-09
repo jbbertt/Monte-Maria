@@ -101,7 +101,15 @@ namespace monte_marai_library
 
         public DataGridView GetPayroll_Details(DataGridView mtDgv)
         {
-            myString = "select initcap(a.last_name)||', '||initcap(a.first_name)||' '||' ' as employee_name, b.payroll_date , c.days_present , c.days_legal_holiday , c.special_non_workingday , d.salary ,e.deduction_total from employee_profiles a, dtr_payroll_date b,	 dtr_attendance c, salaries d, deductions e where  c. payroll_date_id = '"+ Payroll_date_id +"' and c.payroll_date_id = b.payroll_date_id and c.profilie_id = a.profile_id and d.profile_id = a.profile_id and e.profile_id = a.profile_id";
+
+            myString = "select initcap(a.last_name)||', '||initcap(a.first_name)||' '||' ' as employee_name, b.payroll_date , c.days_present , c.days_legal_holiday , c.special_non_workingday , d.salary ,e.deduction_total ,f.employee_net_salary from employee_profiles a, dtr_payroll_date b,	 dtr_attendance c, salaries d, deductions e, net_salary f where  c. payroll_date_id = '" + Payroll_date_id + "' and c.payroll_date_id = b.payroll_date_id and c.profilie_id = a.profile_id and f.attendance_id = c.payroll_date_id and d.profile_id = a.profile_id and e.profile_id = a.profile_id;";
+            return myQuery.ViaDataGridView(myString, mtDgv);
+        }
+
+        public DataGridView GetReport(DataGridView mtDgv)
+        {
+
+            myString = "select initcap(a.last_name)||', '||initcap(a.first_name)||' '||' ' as employee_name, b.payroll_date , c.days_present , c.days_legal_holiday , c.special_non_workingday , d.salary ,e.deduction_total ,f.employee_net_salary, g.sss_contribution , g.pagibig_contribution  ,g.philhealth_contribution, g.od_ca as cash_advance, g.od_eggs as eggs , g.od_hcard as health_card, g.od_hmo as hmo, g.od_phic as phic, g.od_tin as tin , g.od_uniform as uniform, g.od_vehicle as vehicle_plan , g.loan_sss  as sss_loan , g.loan_pagibig as pagibig_loan from employee_profiles a, dtr_payroll_date b,	 dtr_attendance c, salaries d, deductions e, net_salary f , deductions g where  c. payroll_date_id = '1' and g.profile_id = a.profile_id and c.payroll_date_id = b.payroll_date_id and c.profilie_id = a.profile_id and f.attendance_id = c.payroll_date_id and d.profile_id = a.profile_id and e.profile_id = a.profile_id;";
             return myQuery.ViaDataGridView(myString, mtDgv);
         }
     }
